@@ -40,7 +40,11 @@ public class RecipeTypeServiceImpl implements RecipeTypeService {
     }
 
     @Override
-    public void deleteRecipeType(String id) {
-        recipeTypeRepository.deleteById(id);
+    public void deleteRecipeType(String id) throws RecipeTypeNotFound {
+        RecipeType rt = recipeTypeRepository.findById(id).orElse(null);
+        if(rt==null){
+            throw new RecipeTypeNotFound(id);
+        }
+        recipeTypeRepository.delete(rt);
     }
 }

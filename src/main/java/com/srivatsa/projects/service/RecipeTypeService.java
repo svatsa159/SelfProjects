@@ -13,5 +13,5 @@ public interface RecipeTypeService {
     RecipeType addRecipeType(RecipeTypeCreateWrapper wrapper);
     List<RecipeType> getRecipeTypes();
     RecipeType  editRecipeType(RecipeTypeUpdateWrapper wrapper) throws RecipeTypeNotFound;
-    void deleteRecipeType(String id);
+    void deleteRecipeType(String id) throws RecipeTypeNotFound;
 }

@@ -38,7 +38,7 @@ public class RecipeTypeController {
     }
 
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity deleteRecipe(@PathVariable String id){
+    public ResponseEntity deleteRecipe(@PathVariable String id) throws RecipeTypeNotFound {
         recipeTypeService.deleteRecipeType(id);
         return new ResponseEntity(HttpStatus.OK);
     }
