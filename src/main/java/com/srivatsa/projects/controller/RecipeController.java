@@ -29,6 +29,11 @@ public class RecipeController {
         return new ResponseEntity(recipeService.getAllRecipes(), HttpStatus.OK);
     }
 
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<Recipe> getRecipeById(@PathVariable String id) throws RecipeNotFound {
+        return new ResponseEntity(recipeService.getRecipeById(id), HttpStatus.OK);
+    }
+
     @GetMapping(value = "/type/{id}")
     public ResponseEntity<List<Recipe>> getAllRecipesByRecipeType(@PathVariable String id) {
         return new ResponseEntity(recipeService.getRecipesByRecipeType(id), HttpStatus.OK);

@@ -11,6 +11,7 @@ import java.util.List;
 public interface RecipeService {
     List<Recipe> getRecipesByRecipeType(String recipeTypeId);
     List<Recipe> getAllRecipes();
+    Recipe getRecipeById(String id) throws RecipeNotFound;
     Recipe saveRecipe(RecipeCreateWrapper wrapper) throws RecipeTypeNotFound;
     Recipe updateRecipe(RecipeUpdateWrapper wrapper) throws RecipeNotFound, RecipeTypeNotFound;
     void deleteRecipe(String recipeId) throws RecipeNotFound;

@@ -38,6 +38,15 @@ public class RecipeServiceImpl implements RecipeService {
     }
 
     @Override
+    public Recipe getRecipeById(String id) throws RecipeNotFound{
+        Recipe recipe = recipeRepository.findById(id).orElse(null);
+        if(recipe==null) {
+            throw new RecipeNotFound(id);
+        }
+        return recipe;
+    }
+
+    @Override
     public Recipe saveRecipe(RecipeCreateWrapper wrapper) throws RecipeTypeNotFound {
         RecipeType rt = recipeTypeRepository.findById(wrapper.getRecipeType()).orElse(null);
         if(rt==null){
